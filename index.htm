@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container" style="margin-top:150px;">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Soru Ekle</h1>
+                <label>Adı Soyadı</label>
+                <input type="text" id="txtAdsoyad" class="form-control">
+                <label>E-Posta</label>
+                <input type="text" id="txtMail" class="form-control">
+                <label>soru</label>
+                <input type="text" id="txtsoru" class="form-control">
+                <br>
+                <button id="btnSoruEkle" class="btn btn-primary">Soru Ekle</button>
+                <hr>
+                <div id="sonuc"></div>
+
+            </div>
+            <div class="col-md-8">
+                <h1>Sorular</h1>
+                <table class="table table-hover" id="tbSoruEkle">
+                    <tr class="bg-info">
+
+                        <td>Adı Soyadı</td>
+                        <td>E-Posta</td>
+                        <td>soru</td>
+                        <td>Sil</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script>
+        $(function() {
+            $("#btnSoruEkle").click(function() {
+
+                var adsoyad = $("#txtAdsoyad").val();
+                var mail = $("#txtMail").val();
+                var soru = $("#txtsoru").val();
+
+                if (adsoyad == "" || mail == "" || soru == "") {
+                    $("#sonuc").fadeIn(1000);
+                    $("#sonuc").html("Lütfen Tüm Alanları Doldurunuz!");
+                    $("#sonuc").removeClass();
+                    $("#sonuc").addClass("alert alert-danger");
+                    $("#sonuc").fadeOut(3000);
+                    return false;
+                }
+
+                $("#tbSoruEkle").append("<tr><td>" + adsoyad + "</td><td>" + mail + "</td><td>" + soru + "</td><td><button class='btn btn-danger sil'>Sil</button></td></tr>");
+            });
+
+            $(document).on("click", ".sil", function() {
+                var satir = $(this).closest("tr");
+                satir.remove();
+
+            });
+        });
+    </script>
+    <div class="container" style="margin-top:150px;">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Cevap Ekle</h1>
+                <label>Adı Soyadı</label>
+                <input type="text" id="txtAdsoyad" class="form-control">
+                <label>E-Posta</label>
+                <input type="text" id="txtMail" class="form-control">
+                <label>cevap</label>
+                <input type="text" id="txtcevap" class="form-control">
+                <br>
+                <button id="btnCevapEkle" class="btn btn-primary">Cevap Ekle</button>
+                <hr>
+                <div id="sonuc"></div>
+
+            </div>
+            <div class="col-md-8">
+                <h1>Kayıtlar</h1>
+                <table class="table table-hover" id="tbCevapEkle">
+                    <tr class="bg-info">
+
+                        <td>Adı Soyadı</td>
+                        <td>E-Posta</td>
+                        <td>cevap</td>
+                        <td>Sil</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script>
+        $(function() {
+            $("#btnCevapEkle").click(function() {
+
+                var adsoyad = $("#txtAdsoyad").val();
+                var mail = $("#txtMail").val();
+                var cevap = $("#txtcevap").val();
+
+                if (adsoyad == "" || mail == "" || cevap == "") {
+                    $("#sonuc").fadeIn(1000);
+                    $("#sonuc").html("Lütfen Tüm Alanları Doldurunuz!");
+                    $("#sonuc").removeClass();
+                    $("#sonuc").addClass("alert alert-danger");
+                    $("#sonuc").fadeOut(3000);
+                    return false;
+                }
+
+                $("#tbCevapEkle").append("<tr><td>" + adsoyad + "</td><td>" + mail + "</td><td>" + cevap + "</td><td><button class='btn btn-danger sil'>Sil</button></td></tr>");
+            });
+
+            $(document).on("click", ".sil", function() {
+                var satir = $(this).closest("tr");
+                satir.remove();
+
+            });
+        });
+    </script>
+</body>
+
+</html>
